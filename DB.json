@@ -1,0 +1,54 @@
+{
+	"people" : [
+		{
+			"nome":"Claudio",
+			"cognome":"Cincotta",
+			"codiceFiscale":"CNCCLD93A05F158V",
+			"sesso":"M",
+			"dataNascita":"05/01/1993",
+			"indirizzo":"Via Nino Bixio, 20",
+			"citta":"Rometta Marea",
+			"provincia":"ME"
+		},
+		{
+			"nome":"Stefano",
+			"cognome":"Senarighi",
+			"codiceFiscale":"SNRSTF95G18L543N",
+			"sesso":"M",
+			"dataNascita":"18/07/1995",
+			"indirizzo":"Via di Grotta Perfetta, 18",
+			"citta":"Roma",
+			"provincia":"RM"
+		},
+		{
+			"nome":"Martina",
+			"cognome":"Schillaci",
+			"codiceFiscale":"MRTSCH78D67L345K",
+			"sesso":"F",
+			"dataNascita":"27/05/1978",
+			"indirizzo":"Via Nino Bixio, 20",
+			"citta":"Rometta Marea",
+			"provincia":"Messina"
+		}
+	],
+	"capoluoghi": [
+		{
+		"nome":"Roma",
+		"abbreviazione":"RM",
+		"prov":[
+			{
+				"nome":"Trigoria"
+			}
+		]
+		},
+		{
+			"nome":"Latina",
+			"abbreviazione":"LT",
+			"prov":[
+				{
+					"nome":"Priverno"
+				}
+		]
+		}
+	]
+}
