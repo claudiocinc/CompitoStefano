@@ -2,7 +2,7 @@
 <div class="ui-g">
     <div class="ui-g-3">
         <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="term">
+            <input id="float-input" type="text" size="30" pInputText>
             <label for="float-input">Nome</label>
         </span>
     </div>
@@ -30,11 +30,11 @@
         <div class="ui-g-6"></div>
         <div class="ui-g-6">
             <button pButton type="button" label="Aggiungi" icon="fa fa-plus" class="ui-button-rounded ui-button-prime"
-                style="font-size: 1em"></button>
+                style="font-size: 1em" (click)="showDialogCreate()"></button>
         </div>
     </div>
 </div>
-<p-table [value]="persone">
+<p-table [value]="persone" [responsive]="true">
     <ng-template pTemplate="header">
         <tr>
             <th>Nome</th>
@@ -51,7 +51,7 @@
             <td>{{pe.nome }}</td>
             <td>{{pe.cognome}}</td>
             <td>{{pe.id}}</td>
-            <td>{{pe.dataNascita}}</td>
+            <td>{{pe.datadinascita}}</td>
             <td>{{pe.sesso}}</td>
             <td style="text-align: center">
                 <button pButton type="button" icon="fa fa-edit" class="ui-button-rounded ui-button-prime"
@@ -65,33 +65,88 @@
     </ng-template>
 </p-table>
 <!--Modifica di un elemento all'interno della matrice-->
-<p-dialog header="Modifica elemento" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [resizable]="true" [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="10000000" [appendTo]="body" (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl>
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<p-dialog header="Modifica elemento" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [resizable]="true"
+                    [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="10000000" [appendTo]="body"
+                    (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
         <div class="ui-g-12">
-            <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
-                <div class="ui-g-3">
-                    <div class="form-group">
-                        <label for="nome">Nome: </label>
-                        <input type="text" id="nome" class="form-control" ngModel name="nome" required value= {{pers.nome}} pInputText>
+                    <div class="ui-g-3">
+                        <div [formGroup]="checkoutForm">
+                            <label for="nome">
+                              Nome
+                            </label><br>
+                            <input id="nome" type="text" formControlName="nome" size="30" pInputText required>
+                          </div>
                     </div>
+                <div class="ui-g-3">
+                    <div [formGroup]="checkoutForm">
+                        <label for="cognome">
+                          Cognome
+                        </label>
+                        <input id="cognome" type="text" formControlName="cognome" size="30" pInputText required>
+                      </div>
                 </div>
                 <div class="ui-g-3">
-                    <div class="form-group">
-                        <label for="cognome">Cognome: </label>
-                        <input type="text" id="nome" class="form-control" ngModel name="cognome" required value= {{pers.cognome}} pInputText>
-                    </div>
+                    <div [formGroup]="checkoutForm">
+                        <label for="id">
+                          Codice Fiscale
+                        </label>
+                        <input id="id" type="text" formControlName="id" size="30" pInputText required>
+                      </div>
                 </div>
                 <div class="ui-g-3">
-                    <div class="form-group">
-                        <label for="id">Codice Fiscale: </label>
-                        <input type="text" id="id" class="form-control" ngModel name="id" required value= {{pers.id}} pInputText>
+                    <div [formGroup]="checkoutForm">
+                        <label for="indirizzo">
+                          Indirizzo
+                        </label>
+                        <br>
+                        <input id="indirizzo" type="text" formControlName="indirizzo" size="30" pInputText required>
+                      </div>
+                </div>
+                <div class="ui-g-3">
+                    <div [formGroup]="checkoutForm">
+                        <label for="datadinascita">
+                          Data di Nascita
+                        </label>
+                        <p-calendar formControlName="datadinascita" dateFormat="dd/mm/yy" [style]="{width: '20vw'}" [(ngModel)]="datam" required></p-calendar>
+                      </div>
+                </div>
+                <div class="ui-g-3">
+                    <div [formGroup]="checkoutForm">
+                        <label for="sesso" style="align-content: center">
+                          Sesso
+                        </label>
+                    <br>
+                        <div class="ui-g-3">
+                        <p-radioButton name="sesso" value="M" formControlName="sesso" label="M"></p-radioButton>
                     </div>
+                        <div class="ui-g-3">
+                        <p-radioButton name="sesso" value="F" formControlName="sesso" label="F"></p-radioButton>
+                    </div>  
+                </div>
+                </div>
+                <div class="ui-g-3">
+                    <div [formGroup]="checkoutForm">
+                        <label for="citta">
+                          Città<br>
+                        </label>
+                        <p-dropdown id="citta" [options]="cities" formControlName="citta" optionLabel="nome" [(ngModel)]="selectedCity" required></p-dropdown>
+                       </div>
+                </div>
+                <div class="ui-g-3">
+                    <div [formGroup]="checkoutForm">
+                        <label for="provincia">
+                          Provincia<br>
+                        </label>
+                        <p-dropdown id="provincia" [options]="cities" formControlName="provincia" optionLabel="nome" [(ngModel)]="selectedProv"></p-dropdown>
+                      </div>
                 </div>
         </div>
-    </div>
-        <p-footer>
-            <button type="button" pButton icon="fa fa-check" (click)="editIt($event, pers)" label="Yes"
-                (click)="displayEdit=false" [disabled]="!f.valid"></button>
+       <p-footer>
+            <button *ngIf="modifica" pButton icon="fa fa-check" type="submit" label="Yes" (click)="onSubmit(checkoutForm.value)"
+                (click)="displayEdit=false" ></button>
+            <button *ngIf="crea" pButton icon="fa fa-check" type="submit" label="Yes" (click)="onSubmitAdd(checkoutForm.value)"
+                (click)="displayEdit=false" ></button>
             <button type="button" pButton icon="fa fa-close" (click)="displayEdit=false" label="No"
                 class="ui-button-secondary"></button>
         </p-footer>
@@ -108,75 +163,4 @@
                 class="ui-button-secondary"></button>
         </p-footer>
 </p-dialog>
-    <!--
 <div>
-<p-dialog header="Modifica elemento" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [resizable]="true"
-                    [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="10000000" [appendTo]="body"
-                    (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl>
-                    <div class="ui-g-12">
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.nome }}">
-                            </span>
-                        </div>
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.cognome }}">
-                            </span>
-                        </div>
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.id }}">
-                            </span>
-                        </div>
-                        <div class="ui-g-3">
-                            <p-calendar [(ngModel)]="pers.datadinascita" dateFormat="dd/mm/yy" [style]="{width: '20vw'}"></p-calendar>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-3">
-                            <p-radioButton name="groupname" value="M" label="M" [(ngModel)]="pers.sesso"></p-radioButton>
-                            <br>
-                            <p-radioButton name="groupname" value="F" label="F" [(ngModel)]="pers.sesso"></p-radioButton>
-                        </div>
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.indirizzo }}">
-                            </span>
-                        </div>
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.citta }}">
-                
-                            </span>
-                        </div>
-                        <div class="ui-g-3">
-                            <span class="ui-float-label">
-                                <input id="float-input" type="text" size="30" pInputText value="{{ pers.provincia }}">
-                    
-                            </span>
-                        </div>
-                    </div>
-                    <p-footer>
-                        <button type="button" pButton icon="fa fa-check" (click)="editIt($event, pers)" label="Yes"
-                            (click)="displayEdit=false"></button>
-                        <button type="button" pButton icon="fa fa-close" (click)="displayEdit=false" label="No"
-                            class="ui-button-secondary"></button>
-                    </p-footer>
-                </p-dialog>
-            </div>
-
-<p-dialog header="Cancellazione elemento" [(visible)]="displayDelete" [modal]="true" [responsive]="true"
-    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000" [(ngModel)]="pers">
-    <p>Sei sicuro di voler eliminare l'elemento?</p>
-    <p-footer>
-        <button type="button" pButton icon="fa fa-check" (click)="deleteIt($event, pers.id)" label="Yes"
-            (click)="displayDelete=false"></button>
-        <button type="button" pButton icon="fa fa-close" (click)="displayDelete=false" label="No"
-            class="ui-button-secondary"></button>
-    </p-footer>
-</p-dialog>
-
-
-
-Ciao-->

@@ -20,4 +20,10 @@ private people: Persona[];
   deletePerson(id: string) {
    return this.http.delete('http://localhost:3000/people/' + id);
   }
+  updatePerson(person: Persona) {
+    return this.http.put('http://localhost:3000/people/' + person.id, person);
+  }
+  createPerson(person: Persone) {
+    return this.http.post('http://localhost:3000/people/', person);
+  }
 }

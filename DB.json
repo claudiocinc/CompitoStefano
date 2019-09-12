@@ -1,114 +1,167 @@
 {
   "people": [
     {
-      "nome": "Claudio",
+      "nome": "Claudii",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158I",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
-      "citta": "Messina",
-      "sesso": "M"
+      "citta": {
+        "nome": "Villafranca"
+      },
+      "provincia": {
+        "nome": "Palermo"
+      }
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158V",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Villafranca"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158Q",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158W",
+      "sesso": "M",
+      "datadinascita": "05/01/1993",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158R",
+      "datadinascita": "05/07/2010",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158Y",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158U",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158O",
+      "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
       "citta": "Messina",
-      "sesso": "M"
+      "provincia": "Messina"
     },
     {
-      "nome": "Claudio",
+      "nome": "Claudi2",
       "cognome": "Cincotta",
-      "datadinascita": "05/01/1993",
       "id": "CNCCLD93A05F158P",
+      "datadinascita": "07/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "provincia": "ME",
-      "citta": "Messina",
-      "sesso": "M"
+      "citta": {
+        "nome": "Rometta"
+      },
+      "provincia": {
+        "nome": "Rometta"
+      }
+    },
+    {
+      "nome": "Egidio",
+      "cognome": "Cincott",
+      "id": "CNCGDE52L31F158N",
+      "datadinascita": "03/09/2019",
+      "sesso": "M",
+      "indirizzo": "Viale Annunzu",
+      "citta": {
+        "nome": "Rometta"
+      },
+      "provincia": {
+        "nome": "Palermo"
+      }
+    },
+    {
+      "nome": "Stefano",
+      "cognome": "Senarighi",
+      "id": "fnfjlnefjfnen fe",
+      "datadinascita": "12/09/2019",
+      "sesso": "M",
+      "indirizzo": "visnsinaa",
+      "citta": {
+        "nome": "Villafranca"
+      },
+      "provincia": {
+        "nome": "Palermo"
+      }
+    },
+    {
+      "nome": "sfdvfvfs",
+      "cognome": "svfvsfvs",
+      "id": "dvdsvsvds",
+      "datadinascita": "25/09/2019",
+      "sesso": "F",
+      "indirizzo": "vdssdsdv",
+      "citta": {
+        "nome": "Palermo"
+      },
+      "provincia": {
+        "nome": "Rometta"
+      }
     }
   ],
   "capoluoghi": [
     {
-      "nome": "Roma",
-      "abbreviazione": "RM",
-      "prov": [
-        {
-          "nome": "Trigoria"
-        }
-      ]
+      "nome": "Trigoria"
     },
     {
-      "nome": "Latina",
-      "abbreviazione": "LT",
-      "prov": [
-        {
-          "nome": "Priverno"
-        }
-      ]
+      "nome": "Roma"
+    },
+    {
+      "nome": "Messina"
+    },
+    {
+      "nome": "Rometta"
+    },
+    {
+      "nome": "Villafranca"
+    },
+    {
+      "nome": "Palermo"
+    },
+    {
+      "nome": "Erice"
     }
   ]
 }

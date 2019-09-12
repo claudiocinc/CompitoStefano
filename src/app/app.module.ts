@@ -11,7 +11,7 @@ import {OrderListModule} from 'primeng/orderlist';
 import { HomePageComponent } from './home-page/home-page.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {MultiSelectModule} from 'primeng/multiselect';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
@@ -19,7 +19,6 @@ import { EditPersonComponent } from './home-page/edit-person/edit-person.compone
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +40,8 @@ import {DropdownModule} from 'primeng/dropdown';
     HttpClientModule,
     DialogModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
