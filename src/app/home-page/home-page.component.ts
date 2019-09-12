@@ -22,14 +22,17 @@ export class HomePageComponent implements OnInit {
   persone: Persona[];
   cities: City[];
   pers: Persona;
-  col: any[];
+  cols: any[];
+  sex: string;
   data: Data;
   selectedCity: string;
   selectedProv: string;
   displayDelete = false;
   displayEdit = false;
   submitted = false;
+  dateFilters: any;
   checkoutForm: FormGroup;
+  @ViewChild('dt',{static: true}) private _table: Table;
   constructor(private citService: CittaService, private perso: PersonaService, private router: Router, private formBuilder: FormBuilder) {
     this.checkoutForm = this.formBuilder.group({
       nome: '',
@@ -43,7 +46,13 @@ export class HomePageComponent implements OnInit {
     });
   }
   ngOnInit() {
-
+    this.cols = [
+      { field: 'nome', header: 'Nome' },
+      { field: 'cognome', header: 'Cognome' },
+      { field: 'datadinascita', header: 'Data di Nascita' },
+      { field: 'codicefiscale', header: 'Codice Fiscale' },
+      { field: 'sesso', header: 'Sesso' }
+  ];
     this.perso.getPeoplefromWeb().subscribe((data: Persona) => {
       this.persone = data;
     });
@@ -51,11 +60,11 @@ export class HomePageComponent implements OnInit {
       this.cities = data;
       console.log(this.cities);
     });
-    this.col = [
+    this.cols = [
       { field: 'nome', header: 'Nome' },
       { field: 'cognome', header: 'Cognome' },
-      { field: 'dataNascita', header: 'Data di Nascita' },
-      { field: 'codFiscale', header: 'Codice Fiscale' },
+      { field: 'id', header: 'Codice Fiscale' },
+      { field: 'datadinascita', header: 'Data di Nascita' },
       { field: 'sesso', header: 'Sesso' }
     ];
   }
@@ -104,8 +113,8 @@ export class HomePageComponent implements OnInit {
   }
 */
   onSubmit(customerData: Persona) {
-    this.datam.toLocaleDateString("en-GB");
-    customerData.datadinascita=this.datam.toLocaleDateString("en-GB");
+    //this.datam.toLocaleDateString("en-GB");
+    //customerData.datadinascita=this.datam.toLocaleDateString("en-GB");
     console.log(customerData);
     this.perso.updatePerson(customerData).subscribe(result => {
       console.log(result);
@@ -116,8 +125,8 @@ export class HomePageComponent implements OnInit {
     this.checkoutForm.reset();
   }
   onSubmitAdd(customerData: Persona) {
-    this.datam.toLocaleDateString("en-GB");
-    customerData.datadinascita=this.datam.toLocaleDateString("en-GB");
+    //this.datam.toLocaleDateString("en-GB");
+    //customerData.datadinascita = this.datam.toLocaleDateString("en-GB");
     this.perso.createPerson(customerData).subscribe(result => {
       console.log(result);
       this.perso.getPeoplefromWeb().subscribe((data: Persona) => {

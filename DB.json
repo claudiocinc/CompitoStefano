@@ -18,7 +18,7 @@
       "nome": "Claudio",
       "cognome": "Cincotta",
       "id": "CNCCLD93A05F158V",
-      "datadinascita": "05/01/1993",
+      "datadinascita": "20/01/1993",
       "sesso": "M",
       "indirizzo": "Viale Annunziata",
       "citta": "Messina",
@@ -35,11 +35,11 @@
       "provincia": "Messina"
     },
     {
-      "nome": "Claudio",
+      "nome": "Claudioe",
       "cognome": "Cincotta",
       "id": "CNCCLD93A05F158W",
-      "sesso": "M",
       "datadinascita": "05/01/1993",
+      "sesso": "M",
       "indirizzo": "Viale Annunziata",
       "citta": "Messina",
       "provincia": "Messina"
@@ -139,6 +139,18 @@
       "provincia": {
         "nome": "Rometta"
       }
+    },
+    {
+      "nome": "Claudio",
+      "cognome": "Cincotta",
+      "id": "CDCsqddw",
+      "datadinascita": "09/09/2019",
+      "sesso": "M",
+      "indirizzo": "whqvbrbev",
+      "citta": {
+        "nome": "Palermo"
+      },
+      "provincia": null
     }
   ],
   "capoluoghi": [

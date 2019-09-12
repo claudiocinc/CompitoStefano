@@ -23,7 +23,7 @@ private people: Persona[];
   updatePerson(person: Persona) {
     return this.http.put('http://localhost:3000/people/' + person.id, person);
   }
-  createPerson(person: Persone) {
+  createPerson(person: Persona) {
     return this.http.post('http://localhost:3000/people/', person);
   }
 }
