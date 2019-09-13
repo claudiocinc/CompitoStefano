@@ -1,0 +1,44 @@
+fieldset {
+    overflow: hidden
+  }
+  
+  .some-class {
+    float: left;
+    clear: none;
+  }
+  
+  label {
+    float: left;
+    clear: none;
+    display: block;
+    padding: 2px 1em 0 0;
+  }
+  
+  input[type=radio],
+  input.radio {
+    float: left;
+    clear: none;
+    margin: 2px 0 0 2px;
+  }
+
+  input:read-only {
+    background-color: #ffffff;
+    color: rgb(200, 200, 200);
+    border-top-color: rgb(200, 200, 200);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(200, 200, 200);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(200, 200, 200);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(200, 200, 200);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  }

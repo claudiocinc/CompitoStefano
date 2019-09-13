@@ -47,32 +47,16 @@
     {
       "nome": "Claudio",
       "cognome": "Cincotta",
-      "id": "CNCCLD93A05F158R",
-      "datadinascita": "05/07/2010",
-      "sesso": "M",
-      "indirizzo": "Viale Annunziata",
-      "citta": "Messina",
-      "provincia": "Messina"
-    },
-    {
-      "nome": "Claudio",
-      "cognome": "Cincotta",
       "id": "CNCCLD93A05F158Y",
       "datadinascita": "05/01/1993",
       "sesso": "M",
       "indirizzo": "Viale Annunziata",
-      "citta": "Messina",
-      "provincia": "Messina"
-    },
-    {
-      "nome": "Claudio",
-      "cognome": "Cincotta",
-      "id": "CNCCLD93A05F158U",
-      "datadinascita": "05/01/1993",
-      "sesso": "M",
-      "indirizzo": "Viale Annunziata",
-      "citta": "Messina",
-      "provincia": "Messina"
+      "citta": {
+        "nome": "Roma"
+      },
+      "provincia": {
+        "nome": "Messina"
+      }
     },
     {
       "nome": "Claudio",
@@ -155,7 +139,8 @@
   ],
   "capoluoghi": [
     {
-      "nome": "Trigoria"
+      "label": "Trigoria",
+      "value": "0001"
     },
     {
       "nome": "Roma"

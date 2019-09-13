@@ -1,3 +1,4 @@
 interface City {
-    nome: string;
+    label: string;
+    value: string;
   }

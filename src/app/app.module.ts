@@ -15,15 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
-import { EditPersonComponent } from './home-page/edit-person/edit-person.component';
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    EditPersonComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,14 @@ import { Table } from 'primeng/table';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  @ViewChild('tabella',{static:true}) table: Table;
+  @ViewChild('dt', {static: true}) table: Table;
   filters: any = {};
   selectedGender: string;
   modifica = false;
+  disabled: boolean;
   crea = false;
   datam: Data;
+  genere: string;
   persone: Persona[];
   cities: City[];
   pers: Persona;
@@ -32,7 +34,7 @@ export class HomePageComponent implements OnInit {
   submitted = false;
   dateFilters: any;
   checkoutForm: FormGroup;
-  @ViewChild('dt',{static: true}) private _table: Table;
+  @ViewChild('dt', {static: true}) private dt: Table;
   constructor(private citService: CittaService, private perso: PersonaService, private router: Router, private formBuilder: FormBuilder) {
     this.checkoutForm = this.formBuilder.group({
       nome: '',
@@ -46,6 +48,7 @@ export class HomePageComponent implements OnInit {
     });
   }
   ngOnInit() {
+    console.log(this.dt);
     this.cols = [
       { field: 'nome', header: 'Nome' },
       { field: 'cognome', header: 'Cognome' },
@@ -53,10 +56,11 @@ export class HomePageComponent implements OnInit {
       { field: 'codicefiscale', header: 'Codice Fiscale' },
       { field: 'sesso', header: 'Sesso' }
   ];
-    this.perso.getPeoplefromWeb().subscribe((data: Persona) => {
+    console.log(this.cols);
+    this.perso.getPeoplefromWeb().subscribe((data: Persona[]) => {
       this.persone = data;
     });
-    this.citService.getCityfromWeb().subscribe((data: City) => {
+    this.citService.getCityfromWeb().subscribe((data: City[]) => {
       this.cities = data;
       console.log(this.cities);
     });
@@ -76,6 +80,8 @@ export class HomePageComponent implements OnInit {
   }
 
   showDialogEdit(pe: Persona) {
+    this.genere = 'Modifica elemento';
+    this.disabled = false;
     this.crea = false;
     this.modifica = true;
     this.checkoutForm.setValue(pe);
@@ -83,13 +89,28 @@ export class HomePageComponent implements OnInit {
     this.selectedCity = pe.citta;
     console.log(this.selectedCity);
     this.selectedProv = pe.provincia;
-    //console.log(this.pers.id);
+    // console.log(this.pers.id);
+    this.displayEdit = true;
+  }
+  showDialogInfo(pe: Persona) {
+    this.genere = 'Informazioni elemento';
+    this.disabled = true;
+    this.crea = false;
+    this.modifica = true;
+    this.checkoutForm.setValue(pe);
+    console.log(this.checkoutForm);
+    this.selectedCity = pe.citta;
+    console.log(this.selectedCity);
+    this.selectedProv = pe.provincia;
+    // console.log(this.pers.id);
     this.displayEdit = true;
   }
   showDialogCreate() {
+    this.genere = 'Crea elemento';
+    this.disabled = false;
     this.modifica = false;
     this.crea = true;
-    this.checkoutForm.reset()
+    this.checkoutForm.reset();
     console.log(this.checkoutForm);
     this.displayEdit = true;
   }
@@ -98,12 +119,12 @@ export class HomePageComponent implements OnInit {
     console.log(pe.id);
     this.perso.deletePerson(pe.id).subscribe(result => {
       console.log(result);
-      this.perso.getPeoplefromWeb().subscribe((data: Persona) => {
+      this.perso.getPeoplefromWeb().subscribe((data: Persona[]) => {
         this.persone = data;
       });
     });
   }
-  
+
   showDialogMaximized(event, dialog: Dialog) {
     dialog.maximized = true;
 }
@@ -113,23 +134,23 @@ export class HomePageComponent implements OnInit {
   }
 */
   onSubmit(customerData: Persona) {
-    //this.datam.toLocaleDateString("en-GB");
-    //customerData.datadinascita=this.datam.toLocaleDateString("en-GB");
+    // this.datam.toLocaleDateString("en-GB");
+    // customerData.datadinascita=this.datam.toLocaleDateString("en-GB");
     console.log(customerData);
     this.perso.updatePerson(customerData).subscribe(result => {
       console.log(result);
-      this.perso.getPeoplefromWeb().subscribe((data: Persona) => {
+      this.perso.getPeoplefromWeb().subscribe((data: Persona[]) => {
         this.persone = data;
       });
     });
     this.checkoutForm.reset();
   }
   onSubmitAdd(customerData: Persona) {
-    //this.datam.toLocaleDateString("en-GB");
-    //customerData.datadinascita = this.datam.toLocaleDateString("en-GB");
+    // this.datam.toLocaleDateString("en-GB");
+    // customerData.datadinascita = this.datam.toLocaleDateString("en-GB");
     this.perso.createPerson(customerData).subscribe(result => {
       console.log(result);
-      this.perso.getPeoplefromWeb().subscribe((data: Persona) => {
+      this.perso.getPeoplefromWeb().subscribe((data: Persona[]) => {
         this.persone = data;
       });
     });
