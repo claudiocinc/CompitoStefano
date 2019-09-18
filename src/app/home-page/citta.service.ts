@@ -8,4 +8,11 @@ export class CittaService {
   getCityfromWeb() {
     return this.http.get('http://localhost:3000/capoluoghi');
   }
+  getname(id: string, cities: City[]): string {
+    for(let i = 0; i < cities.length; i++) {
+      if( cities[i].value === id) {
+        return cities[i].label;
+      }
+    }
+  }
 }

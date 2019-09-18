@@ -1,44 +1,60 @@
 <h1 class="first" style="text-align: center">Home Page</h1>
 <div #dt>
-
-    <th *ngFor="let col of cols" [ngSwitch]="col.field">
-        <div class="ui-g">
-            <div class="ui-g-12" *ngIf="col.field !== 'sesso' && col.field !== 'datadinascita'">
-                <div class="label margin-2">
-                    <div class="margin-2">{{col.header}}</div>
-                </div>
-                <input id="float-input" type="text" size="30" pInputText
-                    (input)="dt.filter($event.target.value, col.field, 'contains')">
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <div class="label margin-2">
+                <div class="margin-2">Nome</div>
             </div>
-            <div *ngIf="col.field == 'datadinascita'" class="ui-g-12">
-                <div class="label margin-2">
-                    <div class="margin-2">Data di Nascita</div>
-                </div>
-                <p-calendar [(ngModel)]="dateFilters" dataType="string" dateFormat="dd/mm/yy" [style]="{width: '25vw'}"
-                    (onSelect)="dt.filter(dateFilters, col.field , 'contains')">
-                </p-calendar>
+            <input id="nome" type="text" size="30" pInputText [(ngModel)]="nomefilt"
+                (input)="dt.filter($event.target.value, 'nome', 'contains')">
+        </div>
+        <div class="ui-g-3">
+            <div class="label margin-2">
+                <div class="margin-2">Cognome</div>
             </div>
-            <div *ngIf="col.field == 'sesso'" class="ui-g-12">
+            <input id="cognome" type="text" size="30" pInputText [(ngModel)]="cognomefilt"
+                (input)="dt.filter($event.target.value, 'cognome', 'contains')">
+        </div>
+        <div class="ui-g-3">
+            <div class="label margin-2">
+                <div class="margin-2">Codice Fiscale</div>
+            </div>
+            <input id="cf" type="text" size="30" pInputText [(ngModel)]="cffilt"
+                (input)="dt.filter($event.target.value, 'id', 'contains')">
+        </div>
+        <div class="ui-g-2">
+            <div class="label margin-3">
+                <div class="margin-3">Data di Nascita</div>
+            </div>
+            <p-calendar [(ngModel)]="dateFilters" dataType="string" dateFormat="dd/mm/yy" [style]="{width: '25vw'}"
+                (onSelect)="dt.filter(dateFilters, 'datadinascita' , 'contains')">
+            </p-calendar>
+        </div>
+        <div class="ui-g-1">
+            <div class="label margin-2">
+                <div class="margin-2">Sesso</div>
+            </div>
+            <div class="ui-g-6">
+                <p-radioButton name="sesso" value="M" [(ngModel)]="sex" (click)="dt.filter(sex, 'sesso' , 'contains')">
+                </p-radioButton>
                 <div class="label margin-2">
-                    <div class="margin-2">Sesso</div>
+                    <div class="margin-2">M</div>
                 </div>
-                <div class="ui-g-6">
-                    <p-radioButton name="sesso" value="M" [(ngModel)]="sex"
-                        (click)="dt.filter(sex, col.field , 'contains')"></p-radioButton>
-                    <div class="label margin-2">
-                        <div class="margin-2">M</div>
-                    </div>
-                </div>
-                <div class="ui-g-6">
-                    <p-radioButton name="sesso" value="F" [(ngModel)]="sex"
-                        (click)="dt.filter(sex, col.field , 'contains')"></p-radioButton>
-                    <div class="label margin-2">
-                        <div class="margin-2">F</div>
-                    </div>
+            </div>
+            <div class="ui-g-6">
+                <p-radioButton name="sesso" value="F" [(ngModel)]="sex" (click)="dt.filter(sex, 'sesso' , 'contains')">
+                </p-radioButton>
+                <div class="label margin-2">
+                    <div class="margin-2">F</div>
                 </div>
             </div>
         </div>
-    </th>
+        <div class="ui-g-12">
+            <button pButton type="button" label="Reset" icon="fa fa-minus" class="ui-button-rounded ui-button-prime"
+                style="font-size: 1em; float:right;" (click)="reset(dt)"
+                (click)="sex=''; dateFilters=''; nomefilt=''; cognomefilt=''; cffilt='';"></button>
+        </div>
+    </div>
 
     <p-table [value]="persone" [columns]="scrollableCols" [frozenColumns]="frozenCols" frozenWidth="100vw" #dt
         [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
@@ -47,7 +63,7 @@
                 <th *ngFor="let col of cols" style="width:170px">
                     {{col.header}}
                 </th>
-                <th colspan="3">Elimina</th>
+                <th colspan="3">Opzioni</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-persone>
@@ -61,47 +77,54 @@
                 <td style="text-align: center"><button pButton type="button" icon="fa fa-edit"
                         class="ui-button-rounded ui-button-warning" style="font-size: 1em"
                         (click)="showDialogEdit(persone)"></button></td>
-                        <td style="text-align: center"><button pButton type="button" icon="fa fa-file"
-                            class="ui-button-rounded ui-button-info" style="font-size: 1em"
-                            (click)="showDialogInfo(persone)"></button></td>
+                <td style="text-align: center"><button pButton type="button" icon="fa fa-file"
+                        class="ui-button-rounded ui-button-info" style="font-size: 1em"
+                        (click)="showDialogInfo(persone)"></button></td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 
-<br>
-<button pButton type="button" label="Aggiungi" icon="fa fa-plus" class="ui-button-rounded ui-button-prime"
-    style="font-size: 1em; float: right;" (click)="showDialogCreate()"></button>
-
+<div class="ui-g-12">
+    <button pButton type="button" label="Aggiungi" icon="fa fa-plus" class="ui-button-rounded ui-button-prime"
+        style="font-size: 1em; float: right;" (click)="showDialogCreate()"></button>
+</div>
 <p-dialog [header]="genere" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [resizable]="true"
-    [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="10000000" [appendTo]="body"
-    (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="1000" [appendTo]="body"
+    (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl [closable]="false">
+    <form [formGroup]="checkoutForm" >
         <div class="ui-g">
             <div class="ui-g-4">
                 <div class="label margin-2">
                     <div class="margin-2">Nome</div>
                 </div>
-                <input id="nome" type="text" formControlName="nome" size="30" pInputText #nome required [readonly]="disabled">
+                <input id="nome" type="text" formControlName="nome" size="30" pInputText #nome required
+                    class="form-control" [readonly]="disabled">
+                <div *ngIf="checkoutForm?.controls?.nome.invalid && checkoutForm?.controls?.nome.touched">Inserisci un nome</div>
             </div>
             <div class="ui-g-4">
                 <div class="label margin-2">
                     <div class="margin-2">Cognome</div>
                 </div>
-                <input id="cognome" type="text" formControlName="cognome" size="30" pInputText #cognome required [readonly]="disabled">
+                <input id="cognome" type="text" formControlName="cognome" size="30" pInputText #cognome required
+                    [readonly]="disabled">
+                    <div *ngIf="checkoutForm?.controls?.cognome.invalid && checkoutForm?.controls?.cognome.touched">Inserisci un cognome</div>
             </div>
             <div class="ui-g-4">
                 <div class="label margin-2">
                     <div class="margin-2">Codice Fiscale</div>
                 </div>
-                <input id="if" type="text" formControlName="id" size="30" pInputText #id required [readonly]="disabled">
+                <input id="id" type="text" formControlName="id" size="30" pInputText #id required [readonly]="disabled"
+                minlength="16" maxlength="16" pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$">
+                    <div *ngIf="checkoutForm?.controls?.id.invalid && checkoutForm?.controls?.id.touched">Inserisci un codice fiscale valido</div>
             </div>
             <div class="ui-g-4" [formGroup]="checkoutForm">
                 <div class="label margin-2">
                     <div class="margin-2">Data di Nascita</div>
                 </div>
-                <p-calendar formControlName="datadinascita" dateFormat="dd/mm/yy" dataType="string" [disabled]="disabled"
-                    [style]="{width: '20vw'}"></p-calendar>
+                <p-calendar formControlName="datadinascita" dateFormat="dd/mm/yy" dataType="string" required
+                    [disabled]="disabled" [style]="{width: '20vw'}"></p-calendar>
+                    <div *ngIf="checkoutForm?.controls?.datadinascita.invalid && checkoutForm?.controls?.datadinascita.touched">Inserisci una data di nascita</div>
             </div>
             <div class="ui-g-4">
                 <div [formGroup]="checkoutForm">
@@ -109,11 +132,16 @@
                         <div class="margin-2">Sesso</div>
                     </div>
                     <div class="ui-g-3">
-                        <p-radioButton name="sesso" value="M" formControlName="sesso" label="M" [disabled]="disabled"></p-radioButton>
+                        <p-radioButton name="sesso" value="M" formControlName="sesso" label="M" [disabled]="disabled"
+                            required>
+                        </p-radioButton>
                     </div>
                     <div class="ui-g-3">
-                        <p-radioButton name="sesso" value="F" formControlName="sesso" label="F" [disabled]="disabled"></p-radioButton>
+                        <p-radioButton name="sesso" value="F" formControlName="sesso" label="F" [disabled]="disabled"
+                            required>
+                        </p-radioButton>
                     </div>
+                    <div *ngIf="checkoutForm?.controls?.sesso.invalid && checkoutForm?.controls?.sesso.touched">Inserisci un sesso</div>
                 </div>
             </div>
             <div class="ui-g-4">
@@ -121,7 +149,9 @@
                     <div class="label margin-2">
                         <div class="margin-2">Indirizzo</div>
                     </div>
-                    <input id="indirizzo" type="text" formControlName="indirizzo" size="30" pInputText [readonly]="disabled">
+                    <input id="indirizzo" type="text" formControlName="indirizzo" size="30" pInputText required
+                        [readonly]="disabled">
+                        <div *ngIf="checkoutForm?.controls?.indirizzo.invalid && checkoutForm?.controls?.indirizzo.touched">Inserisci un indirizzo</div>
                 </div>
             </div>
             <div class="ui-g-3">
@@ -129,38 +159,50 @@
                     <div class="label margin-2">
                         <div class="margin-2">Città</div>
                     </div>
-                    <p-dropdown id="citta" [options]="cities" formControlName="citta" optionLabel="nome" [disabled]="disabled"
-                        [(ngModel)]="selectedCity"></p-dropdown>
+                    <p-dropdown id="citta" [options]="cities" formControlName="citta" option="value" label="label"
+                        required [disabled]="disabled" [(ngModel)]="selectedCity" placeholder="Inserisci una città"
+                        dataType="string"></p-dropdown>
+                        <div *ngIf="checkoutForm?.controls?.citta.invalid && checkoutForm?.controls?.citta.touched">Inserisci una città</div>
                 </div>
             </div>
-            <div class="ui-g-3">
+            <div class="ui-g-3 ui-g-offset-1">
                 <div [formGroup]="checkoutForm">
                     <div class="label margin-2">
                         <div class="margin-2">Provincia</div>
                     </div>
-                    <p-dropdown id="provincia" [options]="cities" formControlName="provincia" optionLabel="nome" [disabled]="disabled"
-                        [(ngModel)]="selectedProv"></p-dropdown>
+                    <p-dropdown id="provincia" [options]="cities" formControlName="provincia" option="value"
+                        label="label" required [disabled]="disabled" [(ngModel)]="selectedProv"
+                        placeholder="Inserisci una provincia" dataType="string"></p-dropdown>
+                        <div *ngIf="checkoutForm?.controls?.provincia.invalid && checkoutForm?.controls?.provincia.touched">Inserisci una provincia</div>
                 </div>
             </div>
         </div>
         <p-footer style="float: right">
             <button *ngIf="modifica && !disabled" pButton icon="fa fa-check" type="submit" label="Yes"
-                (click)="onSubmit(checkoutForm.value)" (click)="displayEdit=false"
-                [disabled]="!checkoutForm.valid" ></button>
-            <button *ngIf="crea && !disabled" pButton icon="fa fa-check" type="submit" label="Yes"
-                (click)="onSubmitAdd(checkoutForm.value)" (click)="displayEdit=false"
+            (click)="validatecf(checkoutForm.value, checkoutForm.controls?.nome.value, checkoutForm?.controls?.cognome.value, checkoutForm?.controls?.datadinascita.value, checkoutForm?.controls?.sesso.value, checkoutForm?.controls?.citta.value, checkoutForm?.controls?.provincia.value, checkoutForm?.controls?.id.value)"
                 [disabled]="!checkoutForm.valid"></button>
-            <button *ngIf="!disabled" type="button" pButton icon="fa fa-close" (click)="displayEdit=false" label="No"
-                class="ui-button-secondary"></button>
-                <button *ngIf="disabled" type="button" pButton icon="fa fa-close" (click)="displayEdit=false" label="Chiudi"
+            <button *ngIf="crea && !disabled" pButton icon="fa fa-check" type="submit" label="Yes"
+            (click)="validatecf(checkoutForm.value, checkoutForm.controls?.nome.value, checkoutForm?.controls?.cognome.value, checkoutForm?.controls?.datadinascita.value, checkoutForm?.controls?.sesso.value, checkoutForm?.controls?.citta.value, checkoutForm?.controls?.provincia.value, checkoutForm?.controls?.id.value)"
+                [disabled]="!checkoutForm.valid"></button>
+            <button type="button" pButton icon="fa fa-close" (click)="close()" label="Chiudi"
                 class="ui-button-secondary"></button>
         </p-footer>
     </form>
+    
+    <!--<p-dialog header="Errore durante l'inserimento" [(visible)]="!cfvalido" [modal]="true" [responsive]="true"
+    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p>Non è stato possibile completare l'operazione poichè il codice fiscale non è valido</p>
+    <p-footer>
+        <button type="button" pButton icon="fa fa-close" (click)="cfvalido=true" label="Chiudi"
+            class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>-->
 </p-dialog>
+
 
 <!--Cancellazione di un elemento all'interno della matrice-->
 <p-dialog header="Cancellazione elemento" [(visible)]="displayDelete" [modal]="true" [responsive]="true"
-    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000" [closable]="false">
     <p>Sei sicuro di voler eliminare l'elemento?</p>
     <p-footer>
         <button type="button" pButton icon="fa fa-check" (click)="deleteIt($event, pers)" label="Yes"
@@ -169,176 +211,3 @@
             class="ui-button-secondary"></button>
     </p-footer>
 </p-dialog>
-
-<!--
-<p-table [value]="persone" [responsive]="true" #dt>
-    <ng-template pTemplate="caption">
-            <div class="ui-g-3 ui-g-offset-10">
-                    <button pButton type="button" label="Aggiungi" icon="fa fa-plus" class="ui-button-rounded ui-button-prime"
-                        style="font-size: 1em" (click)="showDialogCreate()"></button>
-                </div>
-        <tr>
-            <div class="ui-g">
-                <div class="ui-g-12">
-                    <th *ngFor="let col of cols" [ngSwitch]="col.field">
-                        <div *ngIf="col.field !== 'sesso' && col.field !== 'datadinascita'">
-                            <div class="ui-g-3">
-                                {{col.header}}<br>
-                                <input id="float-input" type="text" size="30" pInputText
-                                    (input)="dt.filter($event.target.value, col.field, 'contains')">
-                            </div>
-                        </div>
-                        <div *ngIf="col.field == 'datadinascita'" class="ui-g-4">
-                            Data di Nascita
-                            <p-calendar [(ngModel)]="dateFilters" dataType="string" dateFormat="dd/mm/yy"
-                                [style]="{width: '25vw'}" (onSelect)="dt.filter(dateFilters, col.field , 'contains')">
-                            </p-calendar>
-                        </div>
-                        <div *ngIf="col.field == 'sesso'" class="ui-g-4">
-                            Sesso<br>
-                            <div class="ui-g-2">
-                                <p-radioButton name="sesso" value="M" label="M" [(ngModel)]="sex"
-                                    (click)="dt.filter(sex, col.field , 'contains')"></p-radioButton>
-                            </div>
-                            <div class="ui-g-2">
-                                <p-radioButton name="sesso" value="F" label="F" [(ngModel)]="sex"
-                                    (click)="dt.filter(sex, col.field , 'contains')"></p-radioButton>
-                            </div>
-                        </div>
-
-                    </th>
-                </div>
-            </div>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <th *ngFor="let col of cols">
-            {{col.header}}
-        </th>
-    </ng-template>
-    <ng-template pTemplate="body" let-pe>
-        <tr>
-            <td>{{pe.nome }}</td>
-            <td>{{pe.cognome}}</td>
-            <td>{{pe.id}}</td>
-            <td>{{pe.datadinascita}}</td>
-            <td>{{pe.sesso}}</td>
-            <td style="text-align: center">
-                <button pButton type="button" icon="fa fa-edit" class="ui-button-rounded ui-button-prime"
-                    style="font-size: 1em" (click)="showDialogEdit(pe)"></button>
-            </td>
-            <td style="text-align: center">
-                <button pButton type="button" icon="fa fa-trash" class="ui-button-rounded ui-button-danger"
-                    style="font-size: 1em" (click)="showDialogDelete(pe)"></button>
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
-Modifica di un elemento all'interno della matrice
-<p-dialog header="Modifica elemento" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [resizable]="true"
-    [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="10000000" [appendTo]="body"
-    (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
-        <div class="ui-g-12">
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="nome">
-                        Nome
-                    </label><br>
-                    <input id="nome" type="text" formControlName="nome" size="30" pInputText #nome required>
-                    <div *ngIf="!nome.valid">Inserisci un nome</div>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="cognome">
-                        Cognome
-                    </label><br>
-                    <input id="cognome" type="text" formControlName="cognome" size="30" pInputText required #cognome>
-                    <div *ngIf="!cognome.valid">Inserisci un cognome</div>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="id">
-                        Codice Fiscale
-                    </label><br>
-                    <input id="id" type="text" formControlName="id" size="30" pInputText required #codfisc>
-                    <div *ngIf="!codfisc.valid && codfisc.touched">Inserisci un CF</div>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="indirizzo">
-                        Indirizzo
-                    </label>
-                    <br>
-                    <input id="indirizzo" type="text" formControlName="indirizzo" size="30" pInputText>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="datadinascita">
-                        Data di Nascita
-                    </label>
-                    <p-calendar formControlName="datadinascita" dateFormat="dd/mm/yy" dataType="string" [style]="{width: '20vw'}"
-                        ></p-calendar>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="sesso" style="align-content: center">
-                        Sesso
-                    </label>
-                    <br>
-                    <div class="ui-g-3">
-                        <p-radioButton name="sesso" value="M" formControlName="sesso" label="M"></p-radioButton>
-                    </div>
-                    <div class="ui-g-3">
-                        <p-radioButton name="sesso" value="F" formControlName="sesso" label="F"></p-radioButton>
-                    </div>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="citta">
-                        Città<br>
-                    </label>
-                    <p-dropdown id="citta" [options]="cities" formControlName="citta" optionLabel="nome"
-                        [(ngModel)]="selectedCity"></p-dropdown>
-                </div>
-            </div>
-            <div class="ui-g-3">
-                <div [formGroup]="checkoutForm">
-                    <label for="provincia">
-                        Provincia<br>
-                    </label>
-                    <p-dropdown id="provincia" [options]="cities" formControlName="provincia" optionLabel="nome"
-                        [(ngModel)]="selectedProv"></p-dropdown>
-                </div>
-            </div>
-        </div>
-        <p-footer>
-            <button *ngIf="modifica" pButton icon="fa fa-check" type="submit" label="Yes"
-                (click)="onSubmit(checkoutForm.value)" (click)="displayEdit=false" [disabled]="!checkoutForm.valid"></button>
-            <button *ngIf="crea" pButton icon="fa fa-check" type="submit" label="Yes"
-                (click)="onSubmitAdd(checkoutForm.value)" (click)="displayEdit=false" [disabled]="!checkoutForm.valid"></button>
-            <button type="button" pButton icon="fa fa-close" (click)="displayEdit=false" label="No"
-                class="ui-button-secondary"></button>
-        </p-footer>
-    </form>
-</p-dialog>
-
-Cancellazione di un elemento all'interno della matrice
-<p-dialog header="Cancellazione elemento" [(visible)]="displayDelete" [modal]="true" [responsive]="true"
-    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-    <p>Sei sicuro di voler eliminare l'elemento?</p>
-    <p-footer>
-        <button type="button" pButton icon="fa fa-check" (click)="deleteIt($event, pers)" label="Yes"
-            (click)="displayDelete=false"></button>
-        <button type="button" pButton icon="fa fa-close" (click)="displayDelete=false" label="No"
-            class="ui-button-secondary"></button>
-    </p-footer>
-</p-dialog>
-<div>
-    -->

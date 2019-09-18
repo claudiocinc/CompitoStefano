@@ -1,3 +1,5 @@
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -39,9 +41,10 @@ import {DropdownModule} from 'primeng/dropdown';
     DialogModule,
     CalendarModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
