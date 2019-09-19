@@ -1,3 +1,20 @@
-
+<p-sidebar [(visible)]="display" position="left" [showCloseIcon]="false">
+    <div class="dashmenu" >
+    Menu
+    </div>
+<div>
+    <a
+      [routerLink] = "['']" href="#" class="list-group-item">
+        Home
+      </a>
+    </div>
+<div>
+      <a
+      [routerLink] = "['creasquadra']" href="#" class="list-group-item">
+        Gestione Squadre
+      </a>
+    </div>
+</p-sidebar>
+<button type="text" (click)="display = true" pButton icon="fa fa-bars"></button>
 <p-toast key="toast" position="top-right" autoZIndex="false" baseZIndex="1000"></p-toast>
 <router-outlet></router-outlet>

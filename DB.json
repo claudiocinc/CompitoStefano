@@ -9,6 +9,46 @@
       "indirizzo": "Viale Annunziata",
       "citta": "0002",
       "provincia": "0002"
+    },
+    {
+      "nome": "Domenico",
+      "cognome": "Aloisio",
+      "id": "LSADNC89H15C351R",
+      "datadinascita": "15/06/1989",
+      "sesso": "M",
+      "indirizzo": "s fsasf asv",
+      "citta": "0004",
+      "provincia": "0004"
+    },
+    {
+      "nome": "Martina",
+      "cognome": "De Angelis",
+      "id": "DNGMTN95R44B354N",
+      "datadinascita": "04/10/1995",
+      "sesso": "F",
+      "indirizzo": "Viale Annunziata",
+      "citta": "0008",
+      "provincia": "0008"
+    },
+    {
+      "nome": "Gianmarco",
+      "cognome": "Lozzi",
+      "id": "LZZGMR94S23H501D",
+      "datadinascita": "23/11/1994",
+      "sesso": "M",
+      "indirizzo": "v",
+      "citta": "0007",
+      "provincia": "0007"
+    },
+    {
+      "nome": "Francesca",
+      "cognome": "Buscemi",
+      "id": "BSCFNC94M50H501P",
+      "datadinascita": "10/08/1994",
+      "sesso": "F",
+      "indirizzo": "svvavas",
+      "citta": "0007",
+      "provincia": "0007"
     }
   ],
   "capoluoghi": [
@@ -39,6 +79,141 @@
     {
       "label": "Roma",
       "value": "0007"
+    },
+    {
+      "label": "Cagliari",
+      "value": "0008"
+    }
+  ],
+  "ruoli": [
+    {
+      "label": "Portiere"
+    },
+    {
+      "label": "Difensore"
+    },
+    {
+      "label": "Ala"
+    },
+    {
+      "label": "Centrocampista"
+    },
+    {
+      "label": "Attaccante"
+    }
+  ],
+  "colori": [
+    {
+      "label": "Rosso",
+      "value": "Rosso"
+    },
+    {
+      "label": "Verde",
+      "value": "Verde"
+    },
+    {
+      "label": "Giallo",
+      "value": "Giallo"
+    },
+    {
+      "label": "Nero",
+      "value": "Nero"
+    },
+    {
+      "label": "Bianco",
+      "value": "Bianco"
+    },
+    {
+      "label": "Azzurro",
+      "value": "Azzurro"
+    },
+    {
+      "label": "Granata",
+      "value": "Granata"
+    }
+  ],
+  "squadre": [
+    {
+      "id": "Milan",
+      "coloresociale1": "Rosso",
+      "coloresociale2": "Nero",
+      "presidente": "Galliani",
+      "citta": "0003",
+      "stadio": "San Siro",
+      "annofondazione": "01/1988",
+      "giocatori": [
+        {
+          "id": "CNCCLD93A05F158V",
+          "nome": "Claudio",
+          "cognome": "Cincotta",
+          "sesso": "M",
+          "piede" : "Destro",
+          "ruolo" : "Difensore"
+        }
+      ]
+    },
+    {
+      "id": "Roma",
+      "presidente": "Sensi",
+      "primocolore": "Giallo",
+      "secondocolore": "Rosso",
+      "citta": "0007",
+      "stadio": "Olimpico",
+      "annofondazione": "03/2019"
+    },
+    {
+      "id": "Livorno",
+      "presidente": "dffbub",
+      "primocolore": "Granata",
+      "secondocolore": "Granata",
+      "citta": "0003",
+      "stadio": "hbhbb",
+      "annofondazione": "08/2019"
+    },
+    {
+      "id": "Atalanta",
+      "presidente": "fvwen",
+      "primocolore": "Giallo",
+      "secondocolore": "Giallo",
+      "citta": "0003",
+      "stadio": " j hlhbhb lib",
+      "annofondazione": "01/2019"
+    },
+    {
+      "id": "Ascoli",
+      "presidente": "vfsdjvnojdn",
+      "primocolore": "Verde",
+      "secondocolore": "Verde",
+      "citta": "0004",
+      "stadio": " hihbiphb pib",
+      "annofondazione": "05/2019"
+    },
+    {
+      "id": "htrrtrb",
+      "presidente": "fgbb",
+      "primocolore": "Giallo",
+      "secondocolore": "Nero",
+      "citta": "0005",
+      "stadio": "evgc",
+      "annofondazione": "05/2019"
+    },
+    {
+      "id": " hjtebmm",
+      "presidente": " vc ss",
+      "primocolore": "Verde",
+      "secondocolore": "Nero",
+      "citta": "0004",
+      "stadio": " sfgf f ",
+      "annofondazione": "03/2019"
+    },
+    {
+      "id": "Real Spindox",
+      "presidente": "Andrea Petrucci",
+      "primocolore": "Granata",
+      "secondocolore": "Nero",
+      "citta": "0001",
+      "stadio": "Stadio Hibiscus",
+      "annofondazione": "09/2019"
     }
   ]
 }

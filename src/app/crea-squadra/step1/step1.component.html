@@ -1,0 +1,63 @@
+<form [formGroup]="creazionesquadra">
+    <div class="ui-g">
+        <div class="ui-g-4">
+            <div class="label margin-2">
+                <div class="margin-2">Nome Squadra</div>
+            </div>
+            <input id="id" type="text" formControlName="id" size="30" pInputText #squadra required class="form-control">
+        </div>
+        <div class="ui-g-4">
+            <div class="label margin-2">
+                <div class="margin-2">Nome Presidente</div>
+            </div>
+            <input id="presidente" type="text" formControlName="presidente" size="30" pInputText #presidente required class="form-control">
+    </div>
+        <div class="ui-g-4">
+            <div class="label margin-2">
+                <div class="margin-2">Stadio</div>
+            </div>
+            <input id="stadio" type="text" formControlName="stadio" size="30" pInputText #stadio required class="form-control">
+    </div>
+    <div class="ui-g-3 ">
+        <div [formGroup]="creazionesquadra">
+            <div class="label margin-2">
+                <div class="margin-2">Colore</div>
+            </div>
+            <p-dropdown id="col" [options]="colori" formControlName="primocolore" option="label" label="label"
+                required [disabled]="disabled" [(ngModel)]="selectedcolore1" placeholder="Inserisci un colore sociale"
+                dataType="string"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-3 ui-g-offset-1">
+        <div [formGroup]="creazionesquadra">
+            <div class="label margin-2">
+                <div class="margin-2">Colore</div>
+            </div>
+            <p-dropdown id="col" [options]="colori" formControlName="secondocolore" option="label" label="label"
+                required [disabled]="disabled" [(ngModel)]="selectedcolore2" placeholder="Inserisci un colore sociale"
+                dataType="string"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-3 ui-g-offset-1">
+        <div [formGroup]="creazionesquadra">
+            <div class="label margin-2">
+                <div class="margin-2">Città</div>
+            </div>
+            <p-dropdown id="citta" [options]="cities" formControlName="citta" option="value" label="label"
+                required [disabled]="disabled" [(ngModel)]="selectedCity" placeholder="Inserisci una città"
+                dataType="string"></p-dropdown>
+                <div *ngIf="checkoutForm?.controls?.citta.invalid && checkoutForm?.controls?.citta.touched">Inserisci una città</div>
+        </div>
+    </div>
+    <div class="ui-g-4" [formGroup]="creazionesquadra">
+        <div class="label margin-2">
+            <div class="margin-2">Anno fondazione</div>
+        </div>
+        <p-calendar formControlName="annofondazione" view="month" dateFormat="yy" dataType="string" required
+            [disabled]="disabled" [style]="{width: '20vw'}" yearRange="1800:2800"></p-calendar>
+    </div>
+    </div>
+    <div>
+    <button pButton icon="fa fa-check" type="submit" label="Yes" (click)="insert(creazionesquadra.value)" [disabled]="creazionesquadra.invalid"></button>
+    </div>
+</form>

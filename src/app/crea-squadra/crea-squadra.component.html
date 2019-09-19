@@ -1,0 +1,7 @@
+<div *ngIf="crea">
+        <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+</div>
+<div>
+<p-button label="Crea squadra" class="ui-button-rounded ui-button-prime" (click)="iniziacreazionesquadra()" *ngIf="!crea"></p-button>
+</div>
+<router-outlet></router-outlet>

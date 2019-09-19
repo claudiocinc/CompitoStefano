@@ -1,3 +1,4 @@
+import { StepsModule } from 'primeng/steps';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
@@ -20,10 +21,20 @@ import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
+import { CreaSquadraComponent } from './crea-squadra/crea-squadra.component';
+import {SidebarModule} from 'primeng/sidebar';
+import { Step1Component } from './crea-squadra/step1/step1.component';
+import { Step2Component } from './crea-squadra/step2/step2.component';
+import { Step3Component } from './crea-squadra/step3/step3.component';
+import {SpinnerModule} from 'primeng/spinner';
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    CreaSquadraComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component
   ],
   imports: [
     BrowserModule,
@@ -42,7 +53,10 @@ import {DropdownModule} from 'primeng/dropdown';
     CalendarModule,
     DropdownModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    SidebarModule,
+    StepsModule,
+    SpinnerModule
   ],
   providers: [HttpClient, MessageService],
   bootstrap: [AppComponent]
