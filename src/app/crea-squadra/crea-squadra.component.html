@@ -1,6 +1,25 @@
 <div *ngIf="crea">
         <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
 </div>
+<p-table [value]="squadre" [columns]="scrollableCols" [frozenColumns]="frozenCols" frozenWidth="100vw" #dt>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let col of cols" style="width:170px">
+                            {{col.header}}
+                        </th>
+                        <th colspan="3">Opzioni</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-squadre>
+                    <tr>
+                        <td *ngFor="let col of cols" style="text-align: center">
+                            {{squadre[col.field]}}
+                        </td>
+                        <td style="text-align: center"><button pButton type="button" icon="fa fa-trash"
+                                class="ui-button-rounded ui-button-danger" style="font-size: 1em" style="align-items: center"></button></td>
+                    </tr>
+                </ng-template>
+            </p-table>
 <div>
 <p-button label="Crea squadra" class="ui-button-rounded ui-button-prime" (click)="iniziacreazionesquadra()" *ngIf="!crea"></p-button>
 </div>

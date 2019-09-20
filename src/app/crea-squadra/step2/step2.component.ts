@@ -1,3 +1,4 @@
+import { Giocatore } from './../../shared/giocatore.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PersonaService } from './../../home-page/persona.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,44 +13,65 @@ import { squadra } from 'src/app/shared/squadra.model';
   templateUrl: './step2.component.html',
   styleUrls: ['./step2.component.scss']
 })
-export class Step2Component implements OnInit {
+export class Step2Component implements OnInit, Giocatore {
+  ruolo: string;
+  altezza: string;
+  peso: string;
+  piedepreferito: string;
+  numeromaglia: string;
+  nome?: string;
+  cognome?: string;
+  id?: string;
+  datadinascita?: string;
+  sesso?: string;
+  indirizzo?: string;
+  citta?: string;
+  provincia?: string;
   creazionegiocatore: FormGroup;
   selectedpiede: string;
   selectedaltezza: string;
   selectedpeso: string;
+  rosa: Giocatore[] = [];
   cols = [
-      { field: 'nome', header: 'Nome' },
-      { field: 'cognome', header: 'Cognome' },
-      { field: 'id', header: 'Codice Fiscale' },
-      { field: 'sesso', header: 'Sesso' },
-      { field: 'ruolo', header: 'Ruolo' },
-      { field: 'piede', header: 'Piede' }
+    { field: 'nome', header: 'Nome' },
+    { field: 'cognome', header: 'Cognome' },
+    { field: 'id', header: 'Codice Fiscale' },
+    { field: 'sesso', header: 'Sesso' },
+    { field: 'ruolo', header: 'Ruolo' },
+    { field: 'piede', header: 'Piede' }
   ];
-  constructor(private creaserv: CreasquadraService, private pers: PersonaService, private formBuilder: FormBuilder ) {
+  constructor(private creaserv: CreasquadraService, private pers: PersonaService, private formBuilder: FormBuilder) {
     this.creazionegiocatore = this.formBuilder.group({
       id: '',
+      nome: '',
+      cognome: '',
       ruolo: '',
       piede: '',
       altezza: '',
-      peso: ''
+      peso: '',
+      numeromaglia: ''
     });
   }
   addplayer = false;
+  choseperson: Persona;
   persone: Persona[];
   squad: squadra;
   ruoli: Ruolo[];
+  cf: string[];
   selectedcf: string;
   piedi = [
-    {label: 'Destro'},
-    {label: 'Sinistro'},
-    {label: 'Ambidestro'}
+    { label: 'Destro', value: 'Destro' },
+    { label: 'Sinistro', value: 'Sinistro' },
+    { label: 'Ambidestro', value: 'Ambidestro' }
   ];
   ngOnInit() {
+    this.squad = this.creaserv.squadra;
+    this.nome = this.creaserv.squadra.id;
+    console.log(this.rosa);
+    this.rosa = this.creaserv.giocatori;
+    console.log(this.rosa);
     this.creaserv.creasquadralab();
     this.creaserv.setactiveindex(1);
-    this.creaserv.getsquadra().subscribe((data: squadra) => {
-      this.squad = data;
-    });
     this.pers.getPeoplefromWeb().subscribe((data: Persona[]) => {
       this.persone = data;
       console.log(this.persone);
@@ -60,7 +82,29 @@ export class Step2Component implements OnInit {
   }
   addplayerbutton() {
     this.addplayer = true;
-   
+  }
+  addplayerfunc(persona: Persona, player: Giocatore) {
+    console.log(player);
+    player.nome = persona.nome;
+    player.cognome = persona.cognome;
+    player.id = persona.id;
+    player.datadinascita = persona.datadinascita;
+    player.indirizzo = persona.indirizzo;
+    player.citta = persona.citta;
+    player.provincia = persona.provincia;
+    player.sesso = persona.sesso;
+    console.log(player);
+    console.log(this.rosa);
+    this.rosa.push(player);
+    this.squad.giocatori = this.rosa;
+    this.creaserv.addplayer(this.squad);
+  }
+  loadpeople(persona: Persona) {
+    console.log(persona);
+    this.pers.getPerson(persona.id).subscribe((pers: Persona) => {
+      this.choseperson = pers;
+      console.log(this.choseperson);
+    });
   }
   showDialogMaximized(event, dialog: Dialog) {
     dialog.maximized = true;

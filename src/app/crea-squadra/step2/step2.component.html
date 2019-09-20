@@ -1,84 +1,95 @@
 <h1 style="text-align: center">Inserimento Calciatori</h1>
-
-<p-table [value]="persone" [columns]="scrollableCols" [frozenColumns]="frozenCols" frozenWidth="100vw" #dt
-        [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
-        <ng-template pTemplate="header">
-            <tr>
-                <th *ngFor="let col of cols" style="width:170px">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-persone>
-            <tr>
-                <td *ngFor="let col of cols" style="text-align: center">
-                    <p *ngFor="let g of squad.giocatori">{{g[col.field]}}</p>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-
+<h2 style="text-align: center">{{nome}}</h2>
+<p-table [value]="rosa" [columns]="scrollableCols" [frozenColumns]="frozenCols" frozenWidth="100vw" #dt>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols" style="width:170px">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rosa>
+        <tr>
+            <td *ngFor="let col of cols" style="text-align: center">
+                {{rosa[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
 
 
-<p-button label="Inserisci giocatore" class="ui-button-rounded ui-button-prime" (click)="addplayerbutton()" ></p-button>
+
+<p-button label="Inserisci giocatore" class="ui-button-rounded ui-button-prime" (click)="addplayerbutton()"></p-button>
 <p-dialog [header]="genere" [(visible)]="addplayer" [modal]="true" [responsive]="true" [resizable]="true"
     [style]="{width: '100vw',height:'1200px'}" [maximizable]="false" [baseZIndex]="1000" [appendTo]="body"
     (onShow)="showDialogMaximized($event,dialDetail)" #dialDetail name="fieldName" ngDefaultControl [closable]="false">
-     <form [formGroup]="creazionegiocatore">
-    <div class="ui-g">
-        <div class="ui-g-3 ">
-            <div [formGroup]="creazionegiocatore">
-                <div class="label margin-2">
-                    <div class="margin-2">Codice fiscale giocatore</div>
-                </div>
-                <p-dropdown id="id" [options]="persone" formControlName="id" optionLabel="id" #id
-                    required [disabled]="disabled" [(ngModel)]="selectedcf" placeholder="Inserisci un codice fiscale"
-                    dataType="string">
-                </p-dropdown>
-            </div>
-        </div>
-        <div class="ui-g-3 ">
-            <div [formGroup]="creazionegiocatore">
-                <div class="label margin-2">
-                    <div class="margin-2">Ruolo</div>
-                </div>
-                <p-dropdown id="ruolo" [options]="ruoli" formControlName="ruolo" optionLabel="label"
-                    required [disabled]="disabled" [(ngModel)]="selectedruolo" placeholder="Inserisci un ruolo"
-                    dataType="string">
-                </p-dropdown>
-            </div>
-        </div>
-        <div class="ui-g-3 ">
-            <div [formGroup]="creazionegiocatore">
-                <div class="label margin-2">
-                    <div class="margin-2">Piede preferito</div>
-                </div>
-                <p-dropdown id="piede" [options]="piedi" formControlName="piede" optionLabel="label"
-                    required [disabled]="disabled" [(ngModel)]="selectedpiede" placeholder="Inserisci il piede preferito"
-                    dataType="string">
-                </p-dropdown>
-            </div>
-        </div>
-        <div class="ui-g-3">
+    <form [formGroup]="creazionegiocatore">
+        <div class="ui-g">
+            <div class="ui-g-3 ">
                 <div [formGroup]="creazionegiocatore">
-                        <div class="label margin-2">
-                            <div class="margin-2">Peso</div>
-                        </div>
-            <p-spinner [(ngModel)]="selectedpeso" formControlName="peso" [step]="0.01" [min]="40" [max]="300"  placeholder="Inserisci il peso"></p-spinner>
-        </div>
-    </div>
-    <div class="ui-g-3">
-            <div [formGroup]="creazionegiocatore">
+                    <div class="label margin-2">
+                        <div class="margin-2">Codice fiscale giocatore</div>
+                    </div>
+                    <p-dropdown id="id" [options]="persone" optionLabel="id" label="id"
+                        required [disabled]="disabled" [(ngModel)]="selectedcf" formControlName = "id"
+                        placeholder="Inserisci un codice fiscale" dataType="string">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="ui-g-3 ">
+                <div [formGroup]="creazionegiocatore">
+                    <div class="label margin-2">
+                        <div class="margin-2">Ruolo</div>
+                    </div>
+                    <p-dropdown id="ruolo" [options]="ruoli" formControlName="ruolo" option="value" label="label" required
+                        [disabled]="disabled" [(ngModel)]="selectedruolo" placeholder="Inserisci un ruolo"
+                        dataType="string">
+                    </p-dropdown>
+
+                </div>
+            </div>
+            <div class="ui-g-3 ">
+                <div [formGroup]="creazionegiocatore">
+                    <div class="label margin-2">
+                        <div class="margin-2">Piede preferito</div>
+                    </div>
+                    <p-dropdown id="piede" [options]="piedi" formControlName="piede" option="value" label="label" required
+                        [disabled]="disabled" [(ngModel)]="selectedpiede" placeholder="Inserisci il piede preferito"
+                        dataType="string">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="ui-g-3">
+                <div [formGroup]="creazionegiocatore">
+                    <div class="label margin-2">
+                        <div class="margin-2">Peso</div>
+                    </div>
+                    <p-spinner [(ngModel)]="selectedpeso" formControlName="peso" [step]="0.01" [min]="40" [max]="300"
+                        placeholder="Inserisci il peso"></p-spinner>
+                </div>
+            </div>
+            <div class="ui-g-3">
+                <div [formGroup]="creazionegiocatore">
                     <div class="label margin-2">
                         <div class="margin-2">Altezza</div>
                     </div>
-        <p-spinner [(ngModel)]="selectedaltezza" formControlName="altezza" [step]="0.01" [min]="1" [max]="2.30"  placeholder="Inserisci l'altezza"></p-spinner>
-    </div>
-</div>
-    </div>
-</form>
+                    <p-spinner [(ngModel)]="selectedaltezza" formControlName="altezza" [step]="0.01" [min]="1"
+                        [max]="2.30" placeholder="Inserisci l'altezza"></p-spinner>
+                </div>
+            </div>
+            <div class="ui-g-3">
+                    <div [formGroup]="creazionegiocatore">
+                        <div class="label margin-2">
+                            <div class="margin-2">Numero maglia</div>
+                        </div>
+                        <p-spinner [(ngModel)]="selectednumber" formControlName="numeromaglia" [step]="1" [min]="1" [max]="99"
+                            placeholder="Inserisci il numero di maglia"></p-spinner>
+                    </div>
+                </div>
+        </div>
+    </form>
     <p-footer>
-        <button type="button" pButton icon="fa fa-check"  label="Yes"
+        <button type="button" pButton icon="fa fa-check" label="Yes" (click)="addplayerfunc(creazionegiocatore.value.id, creazionegiocatore.value)" (click)="addplayer=false"
             (click)="displayDelete=false"></button>
         <button type="button" pButton icon="fa fa-close" (click)="addplayer=false" label="No"
             class="ui-button-secondary"></button>

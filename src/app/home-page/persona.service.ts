@@ -11,8 +11,8 @@ private people: Persona[];
   constructor(private http: HttpClient) {
     
    }
-  getPeople() {
-    return this.people.slice();
+  getPerson(id: string) {
+    return this.http.get('http://localhost:3000/people/' + id);
   }
   getPeoplefromWeb() {
     return this.http.get('http://localhost:3000/people');

@@ -1,1 +1,19 @@
-<p>step3 works!</p>
+<h1 style="text-align: center">Riepilogo</h1>
+<h2 style="text-align: center">{{nome}}</h2>
+<p-table [value]="rosa" [columns]="scrollableCols" [frozenColumns]="frozenCols" frozenWidth="100vw" #dt>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols" style="width:170px">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rosa>
+        <tr>
+            <td *ngFor="let col of cols" style="text-align: center">
+                {{rosa[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-button label="Salva squadra" class="ui-button-rounded ui-button-prime" (click)="saveit()"></p-button>

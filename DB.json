@@ -87,19 +87,24 @@
   ],
   "ruoli": [
     {
-      "label": "Portiere"
+      "label": "Portiere",
+      "value": "Portiere"
     },
     {
-      "label": "Difensore"
+      "label": "Difensore",
+      "value": "Difensore"
     },
     {
-      "label": "Ala"
+      "label": "Ala",
+      "value": "Ala"
     },
     {
-      "label": "Centrocampista"
+      "label": "Centrocampista",
+      "value": "Centrocampista"
     },
     {
-      "label": "Attaccante"
+      "label": "Attaccante",
+      "value": "Attaccante"
     }
   ],
   "colori": [
@@ -133,87 +138,5 @@
     }
   ],
   "squadre": [
-    {
-      "id": "Milan",
-      "coloresociale1": "Rosso",
-      "coloresociale2": "Nero",
-      "presidente": "Galliani",
-      "citta": "0003",
-      "stadio": "San Siro",
-      "annofondazione": "01/1988",
-      "giocatori": [
-        {
-          "id": "CNCCLD93A05F158V",
-          "nome": "Claudio",
-          "cognome": "Cincotta",
-          "sesso": "M",
-          "piede" : "Destro",
-          "ruolo" : "Difensore"
-        }
-      ]
-    },
-    {
-      "id": "Roma",
-      "presidente": "Sensi",
-      "primocolore": "Giallo",
-      "secondocolore": "Rosso",
-      "citta": "0007",
-      "stadio": "Olimpico",
-      "annofondazione": "03/2019"
-    },
-    {
-      "id": "Livorno",
-      "presidente": "dffbub",
-      "primocolore": "Granata",
-      "secondocolore": "Granata",
-      "citta": "0003",
-      "stadio": "hbhbb",
-      "annofondazione": "08/2019"
-    },
-    {
-      "id": "Atalanta",
-      "presidente": "fvwen",
-      "primocolore": "Giallo",
-      "secondocolore": "Giallo",
-      "citta": "0003",
-      "stadio": " j hlhbhb lib",
-      "annofondazione": "01/2019"
-    },
-    {
-      "id": "Ascoli",
-      "presidente": "vfsdjvnojdn",
-      "primocolore": "Verde",
-      "secondocolore": "Verde",
-      "citta": "0004",
-      "stadio": " hihbiphb pib",
-      "annofondazione": "05/2019"
-    },
-    {
-      "id": "htrrtrb",
-      "presidente": "fgbb",
-      "primocolore": "Giallo",
-      "secondocolore": "Nero",
-      "citta": "0005",
-      "stadio": "evgc",
-      "annofondazione": "05/2019"
-    },
-    {
-      "id": " hjtebmm",
-      "presidente": " vc ss",
-      "primocolore": "Verde",
-      "secondocolore": "Nero",
-      "citta": "0004",
-      "stadio": " sfgf f ",
-      "annofondazione": "03/2019"
-    },
-    {
-      "id": "Real Spindox",
-      "presidente": "Andrea Petrucci",
-      "primocolore": "Granata",
-      "secondocolore": "Nero",
-      "citta": "0001",
-      "stadio": "Stadio Hibiscus",
-      "annofondazione": "09/2019"
-    }
   ]
 }

@@ -45,9 +45,7 @@ export class Step1Component implements OnInit, AfterContentChecked {
     this.creaserv.creasquadralab();
   }
 insert(creazionesquadra: squadra) {
-  this.creaserv.insertstep1(creazionesquadra).subscribe(() => {
-    console.log('Inserimento effettuato');
-    this.router.navigate(['/creasquadra/step2']);
-  });
-}
+  this.creaserv.insertstep1(creazionesquadra);
+  this.router.navigate(['/creasquadra/step2']);
+  }
 }

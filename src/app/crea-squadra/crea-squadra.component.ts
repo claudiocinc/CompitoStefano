@@ -13,6 +13,11 @@ export class CreaSquadraComponent implements OnInit, OnChanges {
   items: MenuItem[];
   activeIndex = 0;
   crea = false;
+  cols = [
+    { field: 'id', header: 'Nome' },
+    { field: 'presidente', header: 'Presidente' },
+    { field: 'stadio', header: 'Stadio' }
+  ];
     constructor(private messageService: ToastMessagesService, private router: Router, private route: ActivatedRoute, private creaservice: CreasquadraService) {}
 
   ngOnInit() {
@@ -32,7 +37,6 @@ export class CreaSquadraComponent implements OnInit, OnChanges {
     ];
     this.crea = this.creaservice.crea;
     this.creaservice.setactiveindex(0);
-    
   }
   ngOnChanges() {
     this.crea = false;

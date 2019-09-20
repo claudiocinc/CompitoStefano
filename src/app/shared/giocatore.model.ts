@@ -1,10 +1,8 @@
-interface Giocatore {
-    nome: string;
-    cognome: string;
-    id: string;
+import { Persona } from './persona.model';
+export interface Giocatore extends Persona {
     ruolo: string;
     altezza: string;
     peso: string;
     piedepreferito: string;
-    numeromaglia: number;
+    numeromaglia: string;
 }

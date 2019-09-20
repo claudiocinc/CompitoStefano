@@ -1,3 +1,5 @@
+import { Giocatore } from './giocatore.model';
+
 export interface squadra {
     id: string;
     coloresociale1: string;
@@ -5,6 +7,6 @@ export interface squadra {
     presidente: string;
     citta: string;
     stadio: string;
-    giocatori: string[];
+    giocatori: Giocatore[];
     annofondazione: string;
 }
